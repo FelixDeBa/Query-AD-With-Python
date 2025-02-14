@@ -22,7 +22,7 @@ def execute_command(group:str, columns:str="", out_format:str="csv"):
         print(err)
 
 #citrix for ctrix, PPTP Users for VPN
-def users_of_group(group:str, out_format:str="csv", columns:str="SamAccountName,Name,EmailAddress,Enabled,LockedOut"):
+def users_of_group(group:str, out_format:str="csv", columns:str="SamAccountName,Name,EmailAddress,Enabled"):
     
     usuarios = execute_command(group=group, columns=columns, out_format=out_format)
     return usuarios
