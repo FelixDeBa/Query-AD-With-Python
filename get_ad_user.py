@@ -27,13 +27,13 @@ def ad_users(columns:str=""):
     users = execute_command()
     return usuarios    
 
-def enabled_users(columns:str="SamAccountName,Name,UserPrincipalName", out_format:str="csv"):
+def enabled_users(columns:str="SamAccountName,Name,UserPrincipalName,Enabled", out_format:str="csv"):
     enabled_filter = "{Enabled -eq $True}"
     
     usuarios = execute_command(ad_filter=enabled_filter, columns=columns)
     return usuarios
 
-def disabled_users(columns:str="SamAccountName,Name,UserPrincipalName,Enabled,LockedOut", out_format:str="csv"):
+def disabled_users(columns:str="SamAccountName,Name,UserPrincipalName,Enabled", out_format:str="csv"):
     enabled_filter = "{Enabled -eq $False}"
         
     usuarios = execute_command(ad_filter=enabled_filter, properties="LockedOut", columns=columns, out_format=out_format)
@@ -41,7 +41,7 @@ def disabled_users(columns:str="SamAccountName,Name,UserPrincipalName,Enabled,Lo
         
 
 #para usuarios en cuarentena la ou debe ser Cuarentena y el dc es DC=cerrey,dc=com,dc=mx
-def filter_by_ou(ou:str, dc:str, columns:str="SamAccountName,Name,UserPrincipalName,Enabled,LockedOut", out_format:str="csv"):
+def filter_by_ou(ou:str, dc:str, columns:str="SamAccountName,Name,UserPrincipalName,Enabled", out_format:str="csv"):
         
     usuarios = execute_command(properties="LockedOut", search_base=f"OU={ou},{dc}", columns=columns)
     return usuarios
