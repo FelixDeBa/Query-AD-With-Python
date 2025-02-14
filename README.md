@@ -1,4 +1,4 @@
 # Realizar Consultas a Dominio con Python
 
-> !Note
+> !Info
 > Pendiente descripción
